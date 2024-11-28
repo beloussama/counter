@@ -1,0 +1,127 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    11/29/2024  00:02:55  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\AFFICHAGE COMPTAGE 2.obj TO .\Objects\AFFICHAGE COMPTAGE 2 PRINT (.\Listings\AFFIC
+>> HAGE COMPTAGE 2.m51)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\AFFICHAGE COMPTAGE 2.obj (AFFICHAGE_COMPTAGE_2)
+
+
+LINK MAP OF MODULE:  .\Objects\AFFICHAGE COMPTAGE 2 (AFFICHAGE_COMPTAGE_2)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     007AH     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\AFFICHAGE COMPTAGE 2 (AFFICHAGE_COMPTAGE_2)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        AFFICHAGE_COMPTAGE_2
+  C:002BH         SYMBOL        AFFICHER
+  D:00F0H         SYMBOL        B
+  C:0022H         SYMBOL        CHECK_UNITS
+  C:0043H         SYMBOL        CODE_1
+  C:0049H         SYMBOL        CODE_2
+  C:004FH         SYMBOL        CODE_3
+  C:0055H         SYMBOL        CODE_4
+  C:005BH         SYMBOL        CODE_5
+  C:0061H         SYMBOL        CODE_6
+  C:0067H         SYMBOL        CODE_7
+  C:006DH         SYMBOL        CODE_8
+  C:0073H         SYMBOL        CODE_9
+  C:0079H         SYMBOL        END_CODES
+  C:0010H         SYMBOL        INCREMENT
+  C:000DH         SYMBOL        MAIN_LOOP
+  D:0080H         SYMBOL        P0
+  D:00A0H         SYMBOL        P2
+  D:00B0H         SYMBOL        P3
+  C:003DH         SYMBOL        SEGMENT_CODES
+  C:0026H         SYMBOL        WAIT_RELEASE
+  C:0000H         LINE#         3
+  C:0003H         LINE#         4
+  C:0006H         LINE#         5
+  C:0009H         LINE#         6
+  C:000BH         LINE#         7
+  C:000DH         LINE#         10
+  C:0010H         LINE#         13
+  C:0011H         LINE#         14
+  C:0012H         LINE#         15
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/29/2024  00:02:55  PAGE 2
+
+
+  C:0014H         LINE#         16
+  C:0016H         LINE#         17
+  C:0019H         LINE#         18
+  C:001BH         LINE#         19
+  C:001DH         LINE#         20
+  C:001EH         LINE#         21
+  C:0020H         LINE#         22
+  C:0022H         LINE#         24
+  C:0024H         LINE#         25
+  C:0026H         LINE#         28
+  C:0029H         LINE#         29
+  C:002BH         LINE#         32
+  C:002DH         LINE#         33
+  C:002FH         LINE#         34
+  C:0031H         LINE#         35
+  C:0033H         LINE#         37
+  C:0035H         LINE#         38
+  C:0036H         LINE#         39
+  C:0038H         LINE#         40
+  C:003AH         LINE#         41
+  C:003CH         LINE#         43
+  C:003DH         LINE#         46
+  C:0040H         LINE#         47
+  C:0042H         LINE#         48
+  C:0043H         LINE#         51
+  C:0046H         LINE#         52
+  C:0048H         LINE#         53
+  C:0049H         LINE#         56
+  C:004CH         LINE#         57
+  C:004EH         LINE#         58
+  C:004FH         LINE#         61
+  C:0052H         LINE#         62
+  C:0054H         LINE#         63
+  C:0055H         LINE#         66
+  C:0058H         LINE#         67
+  C:005AH         LINE#         68
+  C:005BH         LINE#         71
+  C:005EH         LINE#         72
+  C:0060H         LINE#         73
+  C:0061H         LINE#         76
+  C:0064H         LINE#         77
+  C:0066H         LINE#         78
+  C:0067H         LINE#         81
+  C:006AH         LINE#         82
+  C:006CH         LINE#         83
+  C:006DH         LINE#         86
+  C:0070H         LINE#         87
+  C:0072H         LINE#         88
+  C:0073H         LINE#         91
+  C:0076H         LINE#         92
+  C:0078H         LINE#         93
+  C:0079H         LINE#         96
+  -------         ENDMOD        AFFICHAGE_COMPTAGE_2
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 007AH BYTE ( 5%) *
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  11/29/2024  00:02:55  PAGE 3
+
+
+
+Program Size: data=8.0 xdata=0 code=122
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

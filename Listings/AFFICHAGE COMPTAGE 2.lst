@@ -1,0 +1,144 @@
+A51 MACRO ASSEMBLER  AFFICHAGE_COMPTAGE_2                                                 11/29/2024 00:02:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\AFFICHAGE COMPTAGE 2.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE AFFICHAGE COMPTAGE 2.ASM SET(SMALL) DEBUG PRINT(.\Listings\AFFICHAGE CO
+                      MPTAGE 2.lst) OBJECT(.\Objects\AFFICHAGE COMPTAGE 2.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+                       2     
+0000 75B03F            3     MOV P3, #3FH  ; Initialiser P3 (afficheur unités, cathode commune)
+0003 75A03F            4     MOV P2, #3FH  ; Initialiser P2 (afficheur dizaines, cathode commune)
+0006 7580FF            5     MOV P0, #0FFH ; Initialiser P1 (configurer P1.0 comme entrée)
+0009 7400              6     MOV A, #00H  ; Initialiser l'accumulateur A
+000B 7900              7     MOV R1, #00H ; Initialiser le registre R1 pour les dizaines
+                       8     
+000D                   9     MAIN_LOOP:
+000D 3080FD           10         JNB P0.0, MAIN_LOOP  ; Si P1.0 est haute, reboucler
+                      11     
+0010                  12     INCREMENT:
+0010 09               13         INC R1               ; Incrémenter les dizaines
+0011 E9               14         MOV A, R1            ; Déplacer R1 dans A
+0012 F5F0             15             MOV B, A             ; Sauvegarder la valeur de A dans B
+0014 540F             16         ANL A, #0FH          ; Masquer les bits supérieurs de A
+0016 B40A09           17         CJNE A, #0AH, CHECK_UNITS ; Vérifier si les unités dépassent 9
+0019 E5F0             18             MOV A,B
+001B 3406             19         ADDC A, #06H        ; Ajouter 6 pour passer au nombre décimal suivant
+001D F9               20             MOV R1,A
+001E F5F0             21             MOV B,A
+0020 8000             22             SJMP CHECK_UNITS 
+0022                  23     CHECK_UNITS:
+0022 112B             24         ACALL AFFICHER       ; Appeler la sous-routine d'affichage
+0024 0126             25         AJMP WAIT_RELEASE    ; Aller à la boucle d'attente de relâchement
+                      26     
+0026                  27     WAIT_RELEASE:
+0026 2080FD           28         JB P0.0, WAIT_RELEASE ; Attendre que P1.0 soit relâché
+0029 80E2             29         SJMP MAIN_LOOP       ; Reboucler au début
+                      30     
+002B                  31     AFFICHER:
+002B E5F0             32         MOV A,B
+002D 540F             33             ANL A, #0FH          ; Masquer les bits supérieurs de A
+002F 113D             34         ACALL SEGMENT_CODES  ; Récupérer le code 7 segments des unités
+0031 F5A0             35         MOV P2, A            ; Déplacer le code 7 segments des unités vers P2
+                      36     
+0033 E5F0             37         MOV A, B             ; Charger la valeur originale de A
+0035 C4               38         SWAP A               ; Échanger les nibbles de A pour obtenir les dizaines
+0036 540F             39         ANL A, #0FH          ; Masquer les bits supérieurs de A pour les dizaines
+0038 113D             40         ACALL SEGMENT_CODES  ; Récupérer le code 7 segments des dizaines
+003A F5B0             41         MOV P3, A            ; Déplacer le code 7 segments des dizaines vers P3
+                      42     
+003C 22               43         RET                  ; Retourner de la sous-routine
+                      44     
+003D                  45     SEGMENT_CODES:
+003D B40003           46         CJNE A, #00, CODE_1
+0040 743F             47         MOV A, #3FH
+0042 22               48         RET
+                      49     
+0043                  50     CODE_1:
+0043 B40103           51         CJNE A, #01, CODE_2
+0046 7406             52         MOV A, #06H
+0048 22               53         RET
+                      54     
+0049                  55     CODE_2:
+0049 B40203           56         CJNE A, #02, CODE_3
+004C 745B             57         MOV A, #5BH
+A51 MACRO ASSEMBLER  AFFICHAGE_COMPTAGE_2                                                 11/29/2024 00:02:52 PAGE     2
+
+004E 22               58         RET
+                      59     
+004F                  60     CODE_3:
+004F B40303           61         CJNE A, #03, CODE_4
+0052 744F             62         MOV A, #4FH
+0054 22               63         RET
+                      64     
+0055                  65     CODE_4:
+0055 B40403           66         CJNE A, #04, CODE_5
+0058 7466             67         MOV A, #66H
+005A 22               68         RET
+                      69     
+005B                  70     CODE_5:
+005B B40503           71         CJNE A, #05, CODE_6
+005E 746D             72         MOV A, #6DH
+0060 22               73         RET
+                      74     
+0061                  75     CODE_6:
+0061 B40603           76         CJNE A, #06, CODE_7
+0064 747D             77         MOV A, #7DH
+0066 22               78         RET
+                      79     
+0067                  80     CODE_7:
+0067 B40703           81         CJNE A, #07, CODE_8
+006A 7407             82         MOV A, #07H
+006C 22               83         RET
+                      84     
+006D                  85     CODE_8:
+006D B40803           86         CJNE A, #08, CODE_9
+0070 747F             87         MOV A, #7FH
+0072 22               88         RET
+                      89     
+0073                  90     CODE_9:
+0073 B40903           91         CJNE A, #09, END_CODES
+0076 746F             92         MOV A, #6FH
+0078 22               93         RET
+                      94     
+0079                  95     END_CODES:
+0079 22               96         RET
+                      97     
+                      98     END
+A51 MACRO ASSEMBLER  AFFICHAGE_COMPTAGE_2                                                 11/29/2024 00:02:52 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AFFICHER . . . . .  C ADDR   002BH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+CHECK_UNITS. . . .  C ADDR   0022H   A   
+CODE_1 . . . . . .  C ADDR   0043H   A   
+CODE_2 . . . . . .  C ADDR   0049H   A   
+CODE_3 . . . . . .  C ADDR   004FH   A   
+CODE_4 . . . . . .  C ADDR   0055H   A   
+CODE_5 . . . . . .  C ADDR   005BH   A   
+CODE_6 . . . . . .  C ADDR   0061H   A   
+CODE_7 . . . . . .  C ADDR   0067H   A   
+CODE_8 . . . . . .  C ADDR   006DH   A   
+CODE_9 . . . . . .  C ADDR   0073H   A   
+END_CODES. . . . .  C ADDR   0079H   A   
+INCREMENT. . . . .  C ADDR   0010H   A   
+MAIN_LOOP. . . . .  C ADDR   000DH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+SEGMENT_CODES. . .  C ADDR   003DH   A   
+WAIT_RELEASE . . .  C ADDR   0026H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

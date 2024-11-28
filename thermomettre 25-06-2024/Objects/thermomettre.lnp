@@ -1,0 +1,3 @@
+".\Objects\thermomettre.obj" 
+TO ".\Objects\thermomettre" 
+PRINT(".\Listings\thermomettre.m51")

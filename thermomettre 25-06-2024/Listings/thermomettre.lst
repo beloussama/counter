@@ -1,0 +1,85 @@
+A51 MACRO ASSEMBLER  THERMOMETTRE                                                         06/25/2024 21:49:06 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\thermomettre.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE thermomettre.asm SET(SMALL) DEBUG PRINT(.\Listings\thermomettre.lst) OB
+                      JECT(.\Objects\thermomettre.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 00H
+0000 7590FF            2     MOV P1,#11111111B    
+0003 758000            3     MOV P0,#00000000B    
+0006 75B000            4     MOV P3,#00000000B    
+0009 900049            5     MOV DPTR,#LABEL      
+000C 7CFA              6     MAIN: MOV R4,#250D   
+000E C2B7              7           CLR P3.7       
+0010 D2B6              8           SETB P3.6      
+0012 C2B5              9           CLR P3.5       
+0014 D2B5             10           SETB P3.5      
+0016 20B4FD           11     WAIT: JB P3.4,WAIT   
+0019 C2B7             12           CLR P3.7       
+001B C2B6             13           CLR P3.6       
+001D E590             14           MOV A,P1       
+001F 75F00A           15           MOV B,#10D     
+0022 84               16           DIV AB         
+0023 FE               17           MOV R6,A       
+0024 AFF0             18           MOV R7,B       
+0026 D2B2             19     DLOOP:SETB P3.2      
+0028 EE               20           MOV A,R6       
+0029 1147             21           ACALL DISPLAY  
+002B F580             22           MOV P0,A       
+002D 1142             23           ACALL DELAY    
+002F E4               24           CLR A          
+0030 EF               25           MOV A,R7       
+0031 C2B2             26           CLR P3.2       
+0033 D2B1             27           SETB P3.1      
+0035 1147             28           ACALL DISPLAY
+0037 F580             29           MOV P0,A
+0039 1142             30           ACALL DELAY
+003B E4               31           CLR A
+003C C2B1             32           CLR P3.1       
+003E DCE6             33           DJNZ R4,DLOOP  
+0040 80CA             34           SJMP MAIN      
+0042 7BFF             35     DELAY: MOV R3,#255D  
+0044 DBFE             36     LABEL1: DJNZ R3,LABEL1
+0046 22               37             RET
+0047 93               38     DISPLAY: MOVC A,@A+DPTR  
+0048 22               39              RET
+0049 3F               40     LABEL: DB 3FH        
+004A 06               41            DB 06H
+004B 5B               42            DB 5BH
+004C 4F               43            DB 4FH
+004D 66               44            DB 66H
+004E 6D               45            DB 6DH
+004F 7D               46            DB 7DH
+0050 07               47            DB 07H
+0051 7F               48            DB 7FH
+0052 6F               49            DB 6FH
+                      50     END 
+A51 MACRO ASSEMBLER  THERMOMETTRE                                                         06/25/2024 21:49:06 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+DELAY. . . . . . .  C ADDR   0042H   A   
+DISPLAY. . . . . .  C ADDR   0047H   A   
+DLOOP. . . . . . .  C ADDR   0026H   A   
+LABEL. . . . . . .  C ADDR   0049H   A   
+LABEL1 . . . . . .  C ADDR   0044H   A   
+MAIN . . . . . . .  C ADDR   000CH   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+WAIT . . . . . . .  C ADDR   0016H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

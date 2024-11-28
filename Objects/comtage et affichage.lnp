@@ -1,0 +1,3 @@
+".\Objects\comtage et affichage.uvopt.obj" 
+TO ".\Objects\comtage et affichage" 
+PRINT(".\Listings\comtage et affichage.m51") RAMSIZE(256) 
